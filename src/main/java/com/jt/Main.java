@@ -2,6 +2,7 @@ package com.jt;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        DeliDisplay deliDisplay = new DeliDisplay();
+        deliDisplay.displayHomeScreen();
     }
 }
