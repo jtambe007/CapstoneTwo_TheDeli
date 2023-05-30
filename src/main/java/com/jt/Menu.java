@@ -104,7 +104,18 @@ public class Menu {
             addChip();
         }
     }
+    public static void addChip() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to add any Chips($1.50) to your order?");
+        String addChip = scanner.nextLine();
+        if (addChip.equalsIgnoreCase("yes")){
+            System.out.println("Type the name of the Chip brand you would like.");
+            String chip = scanner.nextLine();
+        } else {
 
+        }
+
+    }
 
 
 
