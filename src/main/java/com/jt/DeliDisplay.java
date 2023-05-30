@@ -106,6 +106,4 @@ public class DeliDisplay {
         } while (!checkoutInput.equalsIgnoreCase("X"));
     }
 
-
-
 }
