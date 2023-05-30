@@ -73,8 +73,6 @@ public class DeliDisplay {
     }
     public void displayAddSandwich() {
 
-        Scanner scanner = new Scanner(System.in);
-
         // Prompt user for Sandwich Size
         String addExtraSandwich;
         do {
@@ -167,6 +165,7 @@ public class DeliDisplay {
                 System.out.println("Would you like to add another Drink?");
                 anotherDrink = scanner.nextLine();
             } while (anotherDrink.equalsIgnoreCase("yes"));
+        displayAddChips();
         } else {
             displayAddChips();
         }
@@ -178,8 +177,9 @@ public class DeliDisplay {
         if (addChip.equalsIgnoreCase("yes")){
             System.out.println("Type the name of the Chip brand you would like.");
             String chip = scanner.nextLine();
+            displayCheckout();
         } else {
-
+            displayCheckout();
         }
     }
     public void displayCheckout() {
@@ -197,12 +197,14 @@ public class DeliDisplay {
 
             switch (checkoutInput) {
                 case "O":
+                    System.out.println("oh");
                     break;
                 case "X":
+                    System.out.println("no");
                     break;
                 default:
                     System.out.println("Invalid input, try again");
-                    break;
+                  return;
             }
 
         } while (!checkoutInput.equalsIgnoreCase("X"));
