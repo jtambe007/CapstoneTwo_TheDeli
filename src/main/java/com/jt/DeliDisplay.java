@@ -26,7 +26,7 @@ public class DeliDisplay {
                     System.out.println("Exiting...");
                     break;
                 default:
-                    System.out.println("Invalid command, try again");
+                    System.out.println("Invalid input, try again");
 
             }
 
@@ -65,7 +65,7 @@ public class DeliDisplay {
                 case 0:
                     break;
                 default:
-                    System.out.println("Invalid command, try again");
+                    System.out.println("Invalid input, try again");
             }
 
         } while (subInput == 0);
@@ -81,7 +81,31 @@ public class DeliDisplay {
         // Select chip type.
     }
     public void displayCheckout() {
-        //  Confirm or Cancel order here.
+
+        String checkoutInput;
+
+        do {
+            System.out.println("╔══════════════════╗");
+            System.out.println("║     Checkout     ║");
+            System.out.println("╠══════════════════╣");
+            System.out.println("║ O. Confirm Order ║");
+            System.out.println("║ X. Cancel Order  ║");
+            System.out.println("╚══════════════════╝");
+            checkoutInput = scanner.nextLine();
+
+            switch (checkoutInput) {
+                case "O":
+                    break;
+                case "X":
+                    break;
+                default:
+                    System.out.println("Invalid input, try again");
+                    break;
+            }
+
+        } while (!checkoutInput.equalsIgnoreCase("X"));
     }
+
+
 
 }
