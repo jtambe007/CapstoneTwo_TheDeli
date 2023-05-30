@@ -8,8 +8,14 @@ public class DeliDisplay {
         int userInput;
 
         do {
-            System.out.println("1. New Order");
-            System.out.println("2. Exit");
+            System.out.println("╔══════════════════╗");
+            System.out.println("║    DELI-CIOUS    ║");
+            System.out.println("║    sandwiches    ║");
+            System.out.println("╠══════════════════╣");
+            System.out.println("║ 1. New Order     ║");
+            System.out.println("║ 2. Exit          ║");
+            System.out.println("╚══════════════════╝");
+
             userInput = scanner.nextInt();
 
             switch (userInput) {
@@ -32,11 +38,15 @@ public class DeliDisplay {
         int subInput;
 
         do {
-            System.out.println("1. Add Sandwich");
-            System.out.println("2. Add Drink");
-            System.out.println("3. Add Chips");
-            System.out.println("4. Checkout");
-            System.out.println("0. Cancel Order");
+            System.out.println("╔══════════════════╗");
+            System.out.println("║ Build your Order ║");
+            System.out.println("╠══════════════════╣");
+            System.out.println("║ 1. Add Sandwich  ║");
+            System.out.println("║ 2. Add Drink     ║");
+            System.out.println("║ 3. Add Chips     ║");
+            System.out.println("║ 4. Checkout      ║");
+            System.out.println("║ 0. Cancel Order  ║");
+            System.out.println("╚══════════════════╝");
             subInput = scanner.nextInt();
 
             switch (subInput) {
