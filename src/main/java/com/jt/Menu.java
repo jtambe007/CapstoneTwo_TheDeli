@@ -10,7 +10,7 @@ public class Menu {
         String addExtraSandwich;
         do {
             System.out.println("What Size Sandwich would you like?" +
-                    "\nWe have 3 Sizes: 4in., 8in., and 12in. ");
+                    "\nWe have 3 Sizes: 4in.($5.50), 8in.($7.00), and 12in.($8.50) ");
             String size = scanner.nextLine();
 
             // Prompt Customer for Bread Type
@@ -35,7 +35,7 @@ public class Menu {
                             "\n There will be an up charge.");
                     extraMeat = scanner.nextLine();
                 } while (extraMeat.equalsIgnoreCase("yes")); // Will loop back to meat question if "yes"
-                    // FIX : extraMeat = no  It needs to ask for cheese next, not toppings.
+                // FIX : extraMeat = no  It needs to ask for cheese next, not toppings.
             } else { // Prompt Customer for Toppings (Cheese)
                 System.out.println("Would you like to add Cheese?");
                 String addCheese = scanner.nextLine();
@@ -75,7 +75,7 @@ public class Menu {
                 String toasted = scanner.nextLine();
             }
             System.out.println("Would you like your sandwich toasted?"); // figure out how to dry
-            String toasted = scanner.nextLine(); // fix later
+            String toasted = scanner.nextLine(); // fix later  // if no, it repeats the question, fix it
             System.out.println("You have finished building a Sandwich.");
 
             // Gives Customer Option to Build Another Sandwich;
@@ -83,6 +83,29 @@ public class Menu {
             addExtraSandwich = scanner.nextLine();
             if (addExtraSandwich.equalsIgnoreCase("no"));
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
+
+
     }
+
+    public static void addDrink(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to add a Drink to your order?");
+        String addDrink = scanner.nextLine();
+        if (addDrink.equalsIgnoreCase("yes")) {
+            String anotherDrink;
+            do {
+                System.out.println("What size drink would you like?" +
+                        "\nWe have 3 Sizes: Small ($2), Medium ($2.50), Large ($3)");
+                String drinkSize = scanner.nextLine();
+                System.out.println("Would you like to add another Drink?");
+                anotherDrink = scanner.nextLine();
+            } while (anotherDrink.equalsIgnoreCase("yes"));
+        } else {
+            addChip();
+        }
+    }
+
+
+
 
 }
