@@ -1,8 +1,9 @@
 package com.jt;
 
-public class Chip extends Product{
+public class Chip extends Product {
     private String name;
     private String flavor;
+
     public Chip(String name, float price, int quantity, String flavor) {
         super(price, quantity);
         this.flavor = flavor;
@@ -32,5 +33,10 @@ public class Chip extends Product{
                 "name='" + name + '\'' +
                 ", flavor='" + flavor + '\'' +
                 '}';
+    }
+
+    @Override
+    public void setPrice(float price) {
+        price = 1.50f;
     }
 }
