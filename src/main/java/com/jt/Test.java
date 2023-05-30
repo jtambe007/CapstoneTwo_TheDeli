@@ -1,5 +1,5 @@
 package com.jt;
 
-public class test {
+public class Test {
     // testing merge
 }
