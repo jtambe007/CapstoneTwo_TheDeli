@@ -25,6 +25,23 @@ public class Sandwich extends Product {
         this.toasted = toasted;
     }
 
+    public static float getPrice() {
+        float price;
+        String size = Product.getSize();
+
+        if (size.contains("4")) {
+            price = 5.50f;
+        } else if (size.contains("8")) {
+            price = 7.00f;
+        } else if (size.contains("12")) {
+            price = 8.50f;
+        } else {
+            price = 0.0F;
+        }
+        return price;
+    }
+
+
     @Override
     public void setPrice(float price) {
         if (getSize().contains("4")) {
@@ -38,7 +55,6 @@ public class Sandwich extends Product {
             System.out.println("Sorry. That is an invalid entry.");
         }
     }
-
 
     public String getBread() {
         return bread;
@@ -96,12 +112,11 @@ public class Sandwich extends Product {
         this.sauce = sauce;
     }
 
-    public String toasted() {
-        return toasted;
-    }
+    public String getToasted() {
+            return toasted;
+        }
 
-    public void setToasted(String toasted) {
-        toasted = toasted;
+        public void setToasted (String toasted){
+            this.toasted = toasted;
+        }
     }
-}
-

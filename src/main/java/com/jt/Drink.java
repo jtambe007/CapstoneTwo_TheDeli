@@ -8,16 +8,27 @@ public class Drink extends Product {
         this.brand = brand;
     }
 
-    @Override
-    public void setPrice(float price) {
-        if (getSize().equalsIgnoreCase("small")) {
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+
+    public static float getPrice() {
+        float price;
+        String size = Product.getSize();
+        if (size.equalsIgnoreCase("small")) {
             price = 2.00f;
-        } else if (getSize().equalsIgnoreCase("medium")) {
+        } else if (size.equalsIgnoreCase("medium")) {
             price = 2.50f;
-        } else if (getSize().equalsIgnoreCase("large")) {
+        } else if (size.equalsIgnoreCase("large")) {
             price = 3.00f;
         } else {
-            System.out.println("Sorry. That is an invalid entry.");
+            System.out.println("Sorry, that is an invalid size.");
         }
+        return 0.0f;
     }
 }
