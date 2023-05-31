@@ -1,93 +1,107 @@
 package com.jt;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Sandwich extends Product{
-    public static void displayAddSandwich() {
+    private String bread;
+    private String meat;
+    private String extraMeat;
+    private String Cheese;
+    private String extraCheese;
+    private String toppings;
+    private String sauce;
+    private String toasted;
 
-        Scanner scanner = new Scanner(System.in);
-
-        // Prompt user for Sandwich Size
-        String addExtraSandwich;
-        do {
-            System.out.println("What Size Sandwich would you like?" +
-                    "\nWe have 3 Sizes: 4in.($5.50), 8in.($7.00), and 12in.($8.50) ");
-            String size = scanner.nextLine();
-
-            // Prompt Customer for Bread Type
-            System.out.println("What type of bread would you like?" +
-                    "\nWe have white, wheat, rye, or a wrap. ");
-            String bread = scanner.nextLine();
-
-            // Prompt Customer for Meat Topping
-
-            System.out.println("Would you like to add any Meat?");
-            String answer = scanner.nextLine();
-
-            if (answer.equalsIgnoreCase("yes")) {
-                String extraMeat = null;
-                do {
-                    System.out.println("What meat would you like to add?" +
-                            "\nWe have: Steak, Ham, Salami, Roast Beef, Chicken, and Bacon.");
-                    String addMeat = scanner.nextLine();
-
-                    // Prompt Customer to Add Extra Meat
-                    System.out.println("Would you like to add extra meat?" +
-                            "\n There will be an up charge.");
-                    extraMeat = scanner.nextLine();
-                } while (extraMeat.equalsIgnoreCase("yes")); // Will loop back to meat question if "yes"
-                // FIX : extraMeat = no  It needs to ask for cheese next, not toppings.
-            } else { // Prompt Customer for Toppings (Cheese)
-                System.out.println("Would you like to add Cheese?");
-                String addCheese = scanner.nextLine();
-                if (addCheese.equalsIgnoreCase("yes")) {
-                    String extraCheese;
-                    do {
-                        System.out.println("What cheese would you like to add?" +
-                                "\nWe have: American, Provolone, Cheddar, and Swiss. ");
-                        String cheese = scanner.nextLine();
-
-                        // Prompt Customer to Add Extra Cheese
-                        System.out.println("Would you like to add extra cheese?" +
-                                "\n There will be an up charge.");
-                        extraCheese = scanner.nextLine();
-                    } while (extraCheese.equalsIgnoreCase("yes"));
-
-                    //Fixed extras loop, but need them to loop to the next topping if no extras.
-                } else {
-                    System.out.println("What toppings would you like to add?");
-                }
-            }
-            // Prompt Customer for Regular Toppings
-            System.out.println("What toppings would you like to add? We have: ");
-            System.out.println("Lettuce, Peppers, Onions, Tomatoes, Jalapenos" +
-                    "\nCucumbers, Pickles, Guacamole, and Mushrooms.");
-            String toppings = scanner.nextLine();
-
-            System.out.println("Would you like to add any Sauces?");
-            String addSauce = scanner.nextLine();
-            if (addSauce.equalsIgnoreCase("yes")) {
-                System.out.println("What Sauces would you like to add? We have:" +
-                        "\n Mayo, Mustard, Ketchup, Ranch, Au Jus," +
-                        "\n Thousand Island, and Vinaigrette.");
-                String sauce = scanner.nextLine();
-            } else {
-                System.out.println("Would you like your sandwich toasted?");
-                String toasted = scanner.nextLine();
-            }
-            System.out.println("Would you like your sandwich toasted?"); // figure out how to dry
-            String toasted = scanner.nextLine(); // fix later  // if no, it repeats the question, fix it
-            System.out.println("You have finished building a Sandwich.");
-
-            // Gives Customer Option to Build Another Sandwich;
-            System.out.println("Would you like to add another Sandwich?");
-            addExtraSandwich = scanner.nextLine();
-            if (addExtraSandwich.equalsIgnoreCase("no"));
-        } while (addExtraSandwich.equalsIgnoreCase("yes"));
-
+    public Sandwich(float price, int quantity, String size, String bread, String meat, String extraMeat, String cheese
+            , String extraCheese, ArrayList<String> toppings, String sauce, String toasted) {
+        super(price, quantity, size);
+        this.bread = bread;
+        this.meat = meat;
+        this.extraMeat = extraMeat;
+        Cheese = cheese;
+        this.extraCheese = extraCheese;
+        this.toppings = String.valueOf(toppings);
+        this.sauce = sauce;
+        this.toasted = toasted;
     }
 
-    public Sandwich(String name, float price, int quantity, String size) {
-        super(name, price, quantity, size);
+    @Override
+    public void setPrice(float price) {
+        if (getSize().contains("4")) {
+            price += 5.50f;
+
+        } else if (getSize().contains("8")) {
+            price += 7.00f;
+        } else if (getSize().contains("12")) {
+            price += 8.50f;
+        } else {
+            System.out.println("Sorry. That is an invalid entry.");
+        }
+    }
+
+
+
+    public String getBread() {
+        return bread;
+    }
+
+    public void setBread(String bread) {
+        this.bread = bread;
+    }
+
+    public String getMeat() {
+        return meat;
+    }
+
+    public void setMeat(String meat) {
+        this.meat = meat;
+    }
+
+    public String getExtraMeat() {
+        return extraMeat;
+    }
+
+    public void setExtraMeat(String extraMeat) {
+        this.extraMeat = extraMeat;
+    }
+
+    public String getCheese() {
+        return Cheese;
+    }
+
+    public void setCheese(String cheese) {
+        Cheese = cheese;
+    }
+
+    public String getExtraCheese() {
+        return extraCheese;
+    }
+
+    public void setExtraCheese(String extraCheese) {
+        this.extraCheese = extraCheese;
+    }
+
+    public String getToppings() {
+        return toppings;
+    }
+
+    public void setToppings(String toppings) {
+        this.toppings = toppings;
+    }
+
+    public String getSauce() {
+        return sauce;
+    }
+
+    public void setSauce(String sauce) {
+        this.sauce = sauce;
+    }
+
+    public String toasted() {
+        return toasted;
+    }
+
+    public void setToasted(String toasted) {
+        toasted = toasted;
     }
 }

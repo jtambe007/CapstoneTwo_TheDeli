@@ -1,26 +1,42 @@
 package com.jt;
 
-import java.util.Scanner;
+public class Chip extends Product {
+    private String name;
+    private String flavor;
 
-public class Chip extends Product{
-    public static void displayAddChips() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Would you like to add any Chips($1.50) to your order?");
-        String addChip = scanner.nextLine();
-        if (addChip.equalsIgnoreCase("yes")){
-            System.out.println("Type the name of the Chip brand you would like.");
-            String chip = scanner.nextLine();
-        } else {
-        }
+    public Chip(String name, float price, int quantity, String flavor) {
+        super(price, quantity);
+        this.flavor = flavor;
+        this.name = name;
+
     }
 
-    private String chip;
-
-    public Chip(String name, float price, int quantity) {
-        super(name, price, quantity);
+    public String getName() {
+        return name;
     }
 
-    public String getChip() {return chip;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setChip(String chip) {this.chip = chip;}
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
+    @Override
+    public String toString() {
+        return "Chip{" +
+                "name='" + name + '\'' +
+                ", flavor='" + flavor + '\'' +
+                '}';
+    }
+
+    @Override
+    public void setPrice(float price) {
+        price = 1.50f;
+    }
 }
