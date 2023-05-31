@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DeliDisplay {
-    private Order order = new Order();
     static Scanner scanner = new Scanner(System.in);
+    private Order order = new Order();
+
     public void displayHomeScreen() {
         int userInput;
 

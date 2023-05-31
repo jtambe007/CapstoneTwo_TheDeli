@@ -14,6 +14,10 @@ public class Order {
         productList.add(product);
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "productList=" + productList +
+                '}';
+    }
 }
