@@ -13,7 +13,7 @@ public abstract class Product {
     public Product(float price, int quantity, String size) {
         this.price = price;
         this.quantity = quantity;
-        this.size = size;
+        Product.size = size;
     }
 
     public static float getPrice() {
@@ -37,7 +37,7 @@ public abstract class Product {
     }
 
     public void setSize(String size) {
-        this.size = size;
+        Product.size = size;
     }
 
 
@@ -48,4 +48,5 @@ public abstract class Product {
                 ", size='" + size + '\'' +
                 '}';
     }
+
 }

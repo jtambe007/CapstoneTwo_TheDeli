@@ -1,12 +1,15 @@
 package com.jt;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class DeliDisplay {
     static Scanner scanner = new Scanner(System.in);
+
     private static final Order order = new Order();
+
     public void displayHomeScreen() {
         int userInput;
 
@@ -145,8 +148,8 @@ public class DeliDisplay {
             if (addSauce.equalsIgnoreCase("yes")) {
                 System.out.println("""
                         What Sauce would you like to add? We have:
-                         Mayo, Mustard, Ketchup, Ranch, Au Jus,
-                         Thousand Island, and Vinaigrette.""");
+                        Mayo, Mustard, Ketchup, Ranch, Au Jus,
+                        Thousand Island, and Vinaigrette.""");
                 sauce = scanner.nextLine();
             }
 
@@ -160,6 +163,14 @@ public class DeliDisplay {
                     sauce, toasted);
             order.addProduct(sandwich);
 
+                System.out.println("""
+                        What Sauces would you like to add? We have:
+                        Mayo, Mustard, Ketchup, Ranch, Au Jus,
+                        Thousand Island, and Vinaigrette.""");
+                sauce = scanner.nextLine();
+                System.out.println("Would you like your sandwich toasted?");
+                toasted = scanner.nextLine();
+// DONE DEAL - add to arraylist
 
             // Gives Customer Option to Build Another Sandwich;
             System.out.println("Would you like to add another Sandwich?");
@@ -170,6 +181,7 @@ public class DeliDisplay {
                 displayAddDrink();
             }
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
+
 
     }
     public static void displayAddDrink() {
@@ -236,8 +248,11 @@ public class DeliDisplay {
     }
 
     public static void confirmOrder(){
-
-
+//        String receiptData = "DELI-ICIOUS Sandwiches" + "\n" +
+//                "*******************************************" +
+//                size +
+//
+//        return receiptData;
 
     }
 }

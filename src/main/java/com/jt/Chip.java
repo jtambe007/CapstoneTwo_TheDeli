@@ -28,6 +28,10 @@ public class Chip extends Product {
     }
 
     @Override
+    public void setPrice(float price) {
+        price = 1.50f;
+    }
+    @Override
     public String toString() {
         return "Chip{" +
                 "name='" + name + '\'' +
