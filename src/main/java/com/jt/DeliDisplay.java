@@ -75,12 +75,12 @@ public class DeliDisplay {
 
         // Prompt user for Sandwich Size
         String addExtraSandwich;
+        Scanner scanner = new Scanner(System.in);
 
         do {
             System.out.println("What Size Sandwich would you like?");
             System.out.println("We have 3 Sizes: 4in.($5.50), 8in.($7.00), and 12in.($8.50)");
             String size = scanner.nextLine();
-            scanner.nextLine();
 
             // Prompt Customer for Bread Type
             System.out.println("What type of bread would you like?");
@@ -147,10 +147,11 @@ public class DeliDisplay {
             // Gives Customer Option to Build Another Sandwich;
             System.out.println("Would you like to add another Sandwich?");
             addExtraSandwich = scanner.nextLine();
-            if (addExtraSandwich.equalsIgnoreCase("no"));
-            System.out.println("You have finished building a Sandwich.");
-            System.out.println();
-            displayAddDrink();
+            if (addExtraSandwich.equalsIgnoreCase("no")) {
+                System.out.println("You have finished building a Sandwich.");
+                System.out.println();
+                displayAddDrink();
+            } else {}
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
 
     }
@@ -216,6 +217,8 @@ public class DeliDisplay {
     }
 
     public static void confirmOrder(){
+        System.out.print("Confirm Order");
+
 
     }
 }
