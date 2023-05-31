@@ -134,8 +134,6 @@ public class DeliDisplay {
                             "\n There will be an up charge.");
                     extraCheese = scanner.nextLine();
                 } while (extraCheese.equalsIgnoreCase("yes"));
-
-                //Fixed extras loop, but need them to loop to the next topping if no extras.
             } else {
                 System.out.println();
             }
@@ -163,9 +161,8 @@ public class DeliDisplay {
             addExtraSandwich = scanner.nextLine();
             if (addExtraSandwich.equalsIgnoreCase("no")) {
                 System.out.println("You have finished building a Sandwich.");
-                System.out.println();
-                displayAddDrink();
-            } else {}
+                displayOrderScreen();
+            }
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
 
 
@@ -184,10 +181,10 @@ public class DeliDisplay {
                 String drinkFlavor = scanner.nextLine();
                 System.out.println("Would you like to add another Drink?");
                 anotherDrink = scanner.nextLine();
+                displayOrderScreen();
             } while (anotherDrink.equalsIgnoreCase("yes"));
-            displayAddChips();
-        } else {
-            displayAddChips();
+            displayOrderScreen();
+
         }
     }
     public void displayAddChips() {
@@ -197,9 +194,9 @@ public class DeliDisplay {
         if (addChip.equalsIgnoreCase("yes")){
             System.out.println("Type the name of the Chip brand you would like.");
             String chip = scanner.nextLine();
-            displayCheckout();
+            displayOrderScreen();
         } else {
-            displayCheckout();
+            displayOrderScreen();
         }
     }
     public void displayCheckout() {
