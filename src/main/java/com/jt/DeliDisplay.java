@@ -10,7 +10,7 @@ public class DeliDisplay {
         do {
             System.out.println("╔══════════════════╗");
             System.out.println("║    DELI-CIOUS    ║");
-            System.out.println("║    sandwiches    ║");
+            System.out.println("║    Sandwiches    ║");
             System.out.println("╠══════════════════╣");
             System.out.println("║ 1. New Order     ║");
             System.out.println("║ 2. Exit          ║");
@@ -75,14 +75,16 @@ public class DeliDisplay {
 
         // Prompt user for Sandwich Size
         String addExtraSandwich;
+        Scanner scanner = new Scanner(System.in);
+
         do {
-            System.out.println("What Size Sandwich would you like?" +
-                    "\nWe have 3 Sizes: 4in.($5.50), 8in.($7.00), and 12in.($8.50) ");
+            System.out.println("What Size Sandwich would you like?");
+            System.out.println("We have 3 Sizes: 4in.($5.50), 8in.($7.00), and 12in.($8.50)");
             String size = scanner.nextLine();
 
             // Prompt Customer for Bread Type
-            System.out.println("What type of bread would you like?" +
-                    "\nWe have white, wheat, rye, or a wrap. ");
+            System.out.println("What type of bread would you like?");
+            System.out.println("We have white, wheat, rye, or a wrap. ");
             String bread = scanner.nextLine();
 
             // Prompt Customer for Meat Topping
@@ -91,7 +93,7 @@ public class DeliDisplay {
             String answer = scanner.nextLine();
 
             if (answer.equalsIgnoreCase("yes")) {
-                String extraMeat = null;
+                String extraMeat;
                 do {
                     System.out.println("What meat would you like to add?" +
                             "\nWe have: Steak, Ham, Salami, Roast Beef, Chicken, and Bacon.");
@@ -101,9 +103,10 @@ public class DeliDisplay {
                     System.out.println("Would you like to add extra meat?" +
                             "\n There will be an up charge.");
                     extraMeat = scanner.nextLine();
-                } while (extraMeat.equalsIgnoreCase("yes")); // Will loop back to meat question if "yes"
-                // FIX : extraMeat = no  It needs to ask for cheese next, not toppings.
-            } else { // Prompt Customer for Toppings (Cheese)
+
+                } while (extraMeat.equalsIgnoreCase("yes"));
+
+            } else { }// Prompt Customer for Toppings (Cheese)
                 System.out.println("Would you like to add Cheese?");
                 String addCheese = scanner.nextLine();
                 if (addCheese.equalsIgnoreCase("yes")) {
@@ -121,9 +124,9 @@ public class DeliDisplay {
 
                     //Fixed extras loop, but need them to loop to the next topping if no extras.
                 } else {
-                    System.out.println("What toppings would you like to add?");
+                    System.out.println();
                 }
-            }
+
             // Prompt Customer for Regular Toppings
             System.out.println("What toppings would you like to add? We have: ");
             System.out.println("Lettuce, Peppers, Onions, Tomatoes, Jalapenos" +
@@ -137,18 +140,18 @@ public class DeliDisplay {
                         "\n Mayo, Mustard, Ketchup, Ranch, Au Jus," +
                         "\n Thousand Island, and Vinaigrette.");
                 String sauce = scanner.nextLine();
-            } else {
+            } else {}
                 System.out.println("Would you like your sandwich toasted?");
                 String toasted = scanner.nextLine();
-            }
-            System.out.println("Would you like your sandwich toasted?"); // figure out how to dry
-            String toasted = scanner.nextLine(); // fix later  // if no, it repeats the question, fix it
-            System.out.println("You have finished building a Sandwich.");
 
             // Gives Customer Option to Build Another Sandwich;
             System.out.println("Would you like to add another Sandwich?");
             addExtraSandwich = scanner.nextLine();
-            if (addExtraSandwich.equalsIgnoreCase("no"));
+            if (addExtraSandwich.equalsIgnoreCase("no")) {
+                System.out.println("You have finished building a Sandwich.");
+                System.out.println();
+                displayAddDrink();
+            } else {}
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
 
     }
@@ -162,6 +165,8 @@ public class DeliDisplay {
                 System.out.println("What size drink would you like?" +
                         "\nWe have 3 Sizes: Small ($2), Medium ($2.50), Large ($3)");
                 String drinkSize = scanner.nextLine();
+                System.out.println("What flavor would you like?");
+                String drinkFlavor = scanner.nextLine();
                 System.out.println("Would you like to add another Drink?");
                 anotherDrink = scanner.nextLine();
             } while (anotherDrink.equalsIgnoreCase("yes"));
@@ -183,7 +188,7 @@ public class DeliDisplay {
         }
     }
     public void displayCheckout() {
-
+        Scanner scanner = new Scanner(System.in);
         String checkoutInput;
 
         do {
@@ -194,20 +199,26 @@ public class DeliDisplay {
             System.out.println("║ X. Cancel Order  ║");
             System.out.println("╚══════════════════╝");
             checkoutInput = scanner.nextLine();
+            checkoutInput = checkoutInput.toUpperCase();
 
             switch (checkoutInput) {
                 case "O":
-                    System.out.println("oh");
+                    confirmOrder();
                     break;
                 case "X":
                     System.out.println("no");
                     break;
                 default:
                     System.out.println("Invalid input, try again");
-                  return;
+                  break;
             }
 
         } while (!checkoutInput.equalsIgnoreCase("X"));
     }
 
+    public static void confirmOrder(){
+
+
+
+    }
 }
