@@ -1,8 +1,10 @@
 package com.jt;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DeliDisplay {
+    private Order order = new Order();
     static Scanner scanner = new Scanner(System.in);
     public void displayHomeScreen() {
         int userInput;
@@ -140,9 +142,10 @@ public class DeliDisplay {
                         "\n Mayo, Mustard, Ketchup, Ranch, Au Jus," +
                         "\n Thousand Island, and Vinaigrette.");
                 String sauce = scanner.nextLine();
-            } else {}
+            }
                 System.out.println("Would you like your sandwich toasted?");
                 String toasted = scanner.nextLine();
+// DONE DEAL - add to arraylist
 
             // Gives Customer Option to Build Another Sandwich;
             System.out.println("Would you like to add another Sandwich?");
@@ -153,6 +156,7 @@ public class DeliDisplay {
                 displayAddDrink();
             } else {}
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
+
 
     }
     public void displayAddDrink() {
@@ -217,8 +221,11 @@ public class DeliDisplay {
     }
 
     public static void confirmOrder(){
-
-
+//        String receiptData = "DELI-ICIOUS Sandwiches" + "\n" +
+//                "*******************************************" +
+//                size +
+//
+//        return receiptData;
 
     }
 }
