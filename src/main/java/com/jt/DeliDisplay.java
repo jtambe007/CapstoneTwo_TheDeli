@@ -1,9 +1,12 @@
 package com.jt;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DeliDisplay {
     static Scanner scanner = new Scanner(System.in);
+    private Order order = new Order();
+
     public void displayHomeScreen() {
         int userInput;
 
@@ -140,9 +143,10 @@ public class DeliDisplay {
                         "\n Mayo, Mustard, Ketchup, Ranch, Au Jus," +
                         "\n Thousand Island, and Vinaigrette.");
                 String sauce = scanner.nextLine();
-            } else {}
+            }
                 System.out.println("Would you like your sandwich toasted?");
                 String toasted = scanner.nextLine();
+// DONE DEAL - add to arraylist
 
             // Gives Customer Option to Build Another Sandwich;
             System.out.println("Would you like to add another Sandwich?");
@@ -153,6 +157,7 @@ public class DeliDisplay {
                 displayAddDrink();
             } else {}
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
+
 
     }
     public void displayAddDrink() {
@@ -188,7 +193,7 @@ public class DeliDisplay {
         }
     }
     public void displayCheckout() {
-
+        Scanner scanner = new Scanner(System.in);
         String checkoutInput;
 
         do {
@@ -210,15 +215,18 @@ public class DeliDisplay {
                     break;
                 default:
                     System.out.println("Invalid input, try again");
-                  return;
+                  break;
             }
 
         } while (!checkoutInput.equalsIgnoreCase("X"));
     }
 
     public static void confirmOrder(){
-        System.out.print("Confirm Order");
-
+//        String receiptData = "DELI-ICIOUS Sandwiches" + "\n" +
+//                "*******************************************" +
+//                size +
+//
+//        return receiptData;
 
     }
 }
