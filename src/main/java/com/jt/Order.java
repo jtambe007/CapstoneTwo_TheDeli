@@ -2,7 +2,7 @@ package com.jt;
 import java.util.ArrayList;
 public class Order {
 
-    private ArrayList<Product> productList;
+    private final ArrayList<Product> productList;
 
     @Override
     public String toString() {

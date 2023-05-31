@@ -2,7 +2,7 @@ package com.jt;
 
 import java.util.ArrayList;
 
-public class Sandwich extends Product{
+public class Sandwich extends Product {
     private String bread;
     private String meat;
     private String extraMeat;
@@ -25,19 +25,23 @@ public class Sandwich extends Product{
         this.toasted = toasted;
     }
 
-    @Override
-    public void setPrice(float price) {
-        if (getSize().contains("4")) {
-            price += 5.50f;
+    public static float getPrice() {
+        float price;
+        String size = Product.getSize();
 
-        } else if (getSize().contains("8")) {
-            price += 7.00f;
-        } else if (getSize().contains("12")) {
-            price += 8.50f;
+        if (size.contains("4")) {
+            price = 5.50f;
+        } else if (size.contains("8")) {
+            price = 7.00f;
+        } else if (size.contains("12")) {
+            price = 8.50f;
         } else {
-            System.out.println("Sorry. That is an invalid entry.");
+            price = 0.0F;
         }
+        return price;
     }
+
+
 
 
 
@@ -97,7 +101,7 @@ public class Sandwich extends Product{
         this.sauce = sauce;
     }
 
-    public String toasted() {
+    public String getToasted() {
         return toasted;
     }
 

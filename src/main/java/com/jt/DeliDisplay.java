@@ -1,11 +1,12 @@
 package com.jt;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class DeliDisplay {
     static Scanner scanner = new Scanner(System.in);
-    private final Order order = new Order();
+    private static final Order order = new Order();
     public void displayHomeScreen() {
         int userInput;
 
@@ -67,7 +68,7 @@ public class DeliDisplay {
         } while (subInput == 0);
 
     }
-    public void displayAddSandwich() {
+    public static void displayAddSandwich() {
 
         // Prompt user for Sandwich Size
         String addExtraSandwich;
@@ -132,11 +133,9 @@ public class DeliDisplay {
             System.out.println("Lettuce, Peppers, Onions, Tomatoes, Jalapenos" +
                     "\nCucumbers, Pickles, Guacamole, and Mushrooms.");
             String toppings = scanner.nextLine();
-            ArrayList<String> toppingList = new ArrayList<String>();
+            ArrayList<String> toppingList = new ArrayList<>();
             if (toppings.contains(",")) {
-                for (String s : toppings.split(",", 0)) {
-                    toppingList.add(toppings);
-                }
+                toppingList.addAll(Arrays.asList(toppings.split(",", 0)));
             }
 
 
@@ -155,7 +154,9 @@ public class DeliDisplay {
             String toasted = scanner.nextLine();
 
             // Build sandwich
-            Product sandwich = new Sandwich(0, 1, size, bread, addMeat, extraMeat, cheese, extraCheese, toppingList,
+            Product sandwich = new Sandwich(Sandwich.getPrice(), 1, size, bread, addMeat, extraMeat, cheese,
+                    extraCheese,
+                    toppingList,
                     sauce, toasted);
             order.addProduct(sandwich);
 
@@ -171,7 +172,7 @@ public class DeliDisplay {
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
 
     }
-    public void displayAddDrink() {
+    public static void displayAddDrink() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to add a Drink to your order?");
         String addDrink = scanner.nextLine();
@@ -186,25 +187,32 @@ public class DeliDisplay {
                 String drinkFlavor = scanner.nextLine();
                 System.out.println("Would you like to add another Drink?");
                 anotherDrink = scanner.nextLine();
+                Product drink = new Drink(Drink.getPrice(), 1, drinkSize, drinkFlavor);
+                order.addProduct(drink);
             } while (anotherDrink.equalsIgnoreCase("yes"));
         displayAddChips();
         } else {
             displayAddChips();
         }
     }
-    public void displayAddChips() {
+    public static void displayAddChips() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to add any Chips($1.50) to your order?");
         String addChip = scanner.nextLine();
         if (addChip.equalsIgnoreCase("yes")){
             System.out.println("Type the name of the Chip brand you would like.");
             String chip = scanner.nextLine();
+            System.out.println("Type the flavor of " + chip + " you would like.");
+            String flavor = scanner.nextLine();
+            Product chipType = new Chip(chip, Chip.getPrice(), 1, flavor);
+            order.addProduct(chipType);
             displayCheckout();
         } else {
+            System.out.println(order);
             displayCheckout();
         }
     }
-    public void displayCheckout() {
+    public static void displayCheckout() {
         Scanner scanner = new Scanner(System.in);
         String checkoutInput;
 

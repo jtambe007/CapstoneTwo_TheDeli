@@ -35,8 +35,7 @@ public class Chip extends Product {
                 '}';
     }
 
-    @Override
-    public void setPrice(float price) {
-        price = 1.50f;
+    public static float getPrice() {
+        return 1.50f;
     }
 }

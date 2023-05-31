@@ -1,9 +1,9 @@
 package com.jt;
 
-public class Product{
+public abstract class Product {
     private float price;
     private int quantity;
-    private String size;
+    private static String size;
 
     public Product(float price, int quantity) {
         this.price = price;
@@ -16,8 +16,8 @@ public class Product{
         this.size = size;
     }
 
-    public float getPrice() {
-        return price;
+    public static float getPrice() {
+        return 0;
     }
 
     public void setPrice(float price) {
@@ -32,7 +32,7 @@ public class Product{
         this.quantity = quantity;
     }
 
-    public String getSize() {
+    public static String getSize() {
         return size;
     }
 
@@ -48,5 +48,4 @@ public class Product{
                 ", size='" + size + '\'' +
                 '}';
     }
-
 }
