@@ -188,7 +188,7 @@ public class DeliDisplay {
         }
     }
     public void displayCheckout() {
-
+        Scanner scanner = new Scanner(System.in);
         String checkoutInput;
 
         do {
@@ -210,14 +210,14 @@ public class DeliDisplay {
                     break;
                 default:
                     System.out.println("Invalid input, try again");
-                  return;
+                  break;
             }
 
         } while (!checkoutInput.equalsIgnoreCase("X"));
     }
 
     public static void confirmOrder(){
-        System.out.print("Confirm Order");
+
 
 
     }
