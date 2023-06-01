@@ -1,15 +1,12 @@
 package com.jt;
 
 import java.util.ArrayList;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class DeliDisplay {
+    private Order order = new Order();
     static Scanner scanner = new Scanner(System.in);
-
-    private static final Order order = new Order();
-
     public void displayHomeScreen() {
         int userInput;
 
@@ -25,9 +22,15 @@ public class DeliDisplay {
             userInput = scanner.nextInt();
 
             switch (userInput) {
-                case 1 -> displayOrderScreen();
-                case 2 -> System.out.println("Exiting...");
-                default -> System.out.println("Invalid input, try again");
+                case 1:
+                    displayOrderScreen();
+                    break;
+                case 2:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid input, try again");
+
             }
 
         } while (userInput == 0);
@@ -63,6 +66,7 @@ public class DeliDisplay {
                     displayCheckout();
                     break;
                 case 0:
+                    displayHomeScreen();
                     break;
                 default:
                     System.out.println("Invalid input, try again");
@@ -71,7 +75,7 @@ public class DeliDisplay {
         } while (subInput == 0);
 
     }
-    public static void displayAddSandwich() {
+    public void displayAddSandwich() {
 
         // Prompt user for Sandwich Size
         String addExtraSandwich;
@@ -80,12 +84,22 @@ public class DeliDisplay {
         do {
             System.out.println("What Size Sandwich would you like?");
             System.out.println("We have 3 Sizes: 4in.($5.50), 8in.($7.00), and 12in.($8.50)");
-            String size = scanner.nextLine();
+            int size = scanner.nextInt();
+            while (!(size == 4 || size ==8 || size == 12)) {
+                System.out.println("Please enter a valid value!");
+                size = scanner.nextInt();
+            }
 
             // Prompt Customer for Bread Type
-            System.out.println("What type of bread would you like?");
-            System.out.println("We have white, wheat, rye, or a wrap. ");
+            System.out.println("What Type Of Bread Would You Like?");
+            System.out.println("We have White, Wheat, Rye, or a Wrap. ");
             String bread = scanner.nextLine();
+            while (!(bread.equalsIgnoreCase("Wheat") || bread.equalsIgnoreCase("White")
+                    || bread.equalsIgnoreCase("Wrap") || bread.equalsIgnoreCase("Rye"))) {
+                System.out.println("Please enter a valid Bread Type!");
+                bread = scanner.nextLine();
+            }
+
 
             // Prompt Customer for Meat Topping
 
@@ -107,13 +121,12 @@ public class DeliDisplay {
 
                 } while (extraMeat.equalsIgnoreCase("yes"));
 
-            }
-            // Prompt Customer for Toppings (Cheese)
-
+            } else {
+            }// Prompt Customer for Toppings (Cheese)
             System.out.println("Would you like to add Cheese?");
             String addCheese = scanner.nextLine();
-            String extraCheese = null;
             String cheese = null;
+            String extraCheese = null;
             if (addCheese.equalsIgnoreCase("yes")) {
                 do {
                     System.out.println("What cheese would you like to add?" +
@@ -125,8 +138,6 @@ public class DeliDisplay {
                             "\n There will be an up charge.");
                     extraCheese = scanner.nextLine();
                 } while (extraCheese.equalsIgnoreCase("yes"));
-
-                //Fixed extras loop, but need them to loop to the next topping if no extras.
             } else {
                 System.out.println();
             }
@@ -141,89 +152,96 @@ public class DeliDisplay {
                 toppingList.addAll(Arrays.asList(toppings.split(",", 0)));
             }
 
-
             System.out.println("Would you like to add any Sauces?");
             String addSauce = scanner.nextLine();
             String sauce = null;
             if (addSauce.equalsIgnoreCase("yes")) {
-                System.out.println("""
-                        What Sauce would you like to add? We have:
-                        Mayo, Mustard, Ketchup, Ranch, Au Jus,
-                        Thousand Island, and Vinaigrette.""");
+                System.out.println("What Sauces would you like to add? We have:" +
+                        "\n Mayo, Mustard, Ketchup, Ranch, Au Jus," +
+                        "\n Thousand Island, and Vinaigrette.");
                 sauce = scanner.nextLine();
             }
-
             System.out.println("Would you like your sandwich toasted?");
             String toasted = scanner.nextLine();
 
-
-                System.out.println("""
-                        What Sauces would you like to add? We have:
-                        Mayo, Mustard, Ketchup, Ranch, Au Jus,
-                        Thousand Island, and Vinaigrette.""");
-                sauce = scanner.nextLine();
-                System.out.println("Would you like your sandwich toasted?");
-                toasted = scanner.nextLine();
 // DONE DEAL - add to arraylist
             Product sandwich = new Sandwich(Sandwich.getPrice(), 1, size, bread, addMeat, extraMeat, cheese,
                     extraCheese,
                     toppingList,
                     sauce, toasted);
             order.addProduct(sandwich);
+            System.out.print(order);
 
             // Gives Customer Option to Build Another Sandwich;
             System.out.println("Would you like to add another Sandwich?");
             addExtraSandwich = scanner.nextLine();
             if (addExtraSandwich.equalsIgnoreCase("no")) {
                 System.out.println("You have finished building a Sandwich.");
-                System.out.println();
-                displayAddDrink();
+                System.out.println(order);
+                displayOrderScreen();
             }
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
 
 
     }
-    public static void displayAddDrink() {
+    public void displayAddDrink() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to add a Drink to your order?");
         String addDrink = scanner.nextLine();
-
         if (addDrink.equalsIgnoreCase("yes")) {
             String anotherDrink;
             do {
                 System.out.println("What size drink would you like?" +
-                        "\nWe have 3 Sizes: Small ($2), Medium ($2.50), Large ($3)");
-                String drinkSize = scanner.nextLine();
+                        "\nWe have 3 Sizes: 1:Small ($2), 2:Medium ($2.50), 3:Large ($3)" +
+                        "\nTo Choose Size Input: 1, 2, or 3");
+                int drinkOption = scanner.nextInt();
+
                 System.out.println("What flavor would you like?");
                 String drinkFlavor = scanner.nextLine();
+                String drinkSize = null;
+
+                if(drinkOption == 1){ // option for Sm. Drink
+                    drinkSize = "Small";
+                } else if(drinkOption == 2){ // option for Med. Drink
+                    drinkSize = "Medium";
+                } else if(drinkOption == 3){ // option for Lrg. Drink
+                    drinkSize = "Large";
+                }
+
+                // adds Drink to ArrayList
+                Product drink = new Drink(Drink.getPrice(), 1, "", "");
+                order.addProduct(drink);
+                System.out.println(drink);
+                System.out.println("You have added 1 " + drinkSize + " " + drinkFlavor + " to your Order.");
+
+                // Gives customer option to add another Drink
                 System.out.println("Would you like to add another Drink?");
                 anotherDrink = scanner.nextLine();
-                Product drink = new Drink(Drink.getPrice(), 1, drinkSize, drinkFlavor);
-                order.addProduct(drink);
+                displayOrderScreen();
             } while (anotherDrink.equalsIgnoreCase("yes"));
-        displayAddChips();
-        } else {
-            displayAddChips();
         }
     }
-    public static void displayAddChips() {
+    public void displayAddChips() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to add any Chips($1.50) to your order?");
         String addChip = scanner.nextLine();
         if (addChip.equalsIgnoreCase("yes")){
             System.out.println("Type the name of the Chip brand you would like.");
-            String chip = scanner.nextLine();
-            System.out.println("Type the flavor of " + chip + " you would like.");
-            String flavor = scanner.nextLine();
-            Product chipType = new Chip(chip, Chip.getPrice(), 1, flavor);
-            order.addProduct(chipType);
-            displayCheckout();
+            String chipName = scanner.nextLine();
+            System.out.println("You have added " + chipName + " to your order.");
+
+            // adds Chips to arrayList
+            Product chip = new Chip(Chip.getPrice(), 1, chipName);
+            order.addProduct(chip);
+            System.out.println(chip);
+
+            System.out.println();
+            displayOrderScreen();
         } else {
-            System.out.println(order.toString());
-            displayCheckout();
+            displayOrderScreen();
         }
     }
-    public static void displayCheckout() {
+    public void displayCheckout() {
         Scanner scanner = new Scanner(System.in);
         String checkoutInput;
 
@@ -238,9 +256,15 @@ public class DeliDisplay {
             checkoutInput = checkoutInput.toUpperCase();
 
             switch (checkoutInput) {
-                case "O" -> confirmOrder();
-                case "X" -> System.out.println("no");
-                default -> System.out.println("Invalid input, try again");
+                case "O":
+                    confirmOrder();
+                    break;
+                case "X":
+                    System.out.println("no");
+                    break;
+                default:
+                    System.out.println("Invalid input, try again");
+                    break;
             }
 
         } while (!checkoutInput.equalsIgnoreCase("X"));

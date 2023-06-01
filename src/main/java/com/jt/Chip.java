@@ -2,13 +2,11 @@ package com.jt;
 
 public class Chip extends Product {
     private String name;
-    private String flavor;
 
-    public Chip(String name, float price, int quantity, String flavor) {
+    public Chip(float price, int quantity, String name) {
         super(price, quantity);
-        this.flavor = flavor;
         this.name = name;
-
+        this.setPrice(1.50f);
     }
 
     public String getName() {
@@ -19,27 +17,9 @@ public class Chip extends Product {
         this.name = name;
     }
 
-    public String getFlavor() {
-        return flavor;
-    }
-
-    public void setFlavor(String flavor) {
-        this.flavor = flavor;
-    }
-
-    @Override
-    public void setPrice(float price) {
-        price = 1.50f;
-    }
     @Override
     public String toString() {
-        return "Chip{" +
-                "name='" + name + '\'' +
-                ", flavor='" + flavor + '\'' +
-                '}';
-    }
-
-    public static float getPrice() {
-        return 1.50f;
+        return "Chip Qty:" + getQuantity() + " " +
+                getName() + " $" + getPrice();
     }
 }

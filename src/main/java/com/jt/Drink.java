@@ -1,34 +1,31 @@
 package com.jt;
 
-public class Drink extends Product {
-    private String brand;
+public class Drink extends Product{
+    private String flavor;
+    private int drinkOption;
+    private String drinkSize;
 
-    public Drink(float price, int quantity, int size, String brand) {
-        super(price, quantity, size);
-        this.brand = brand;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-
-    public static float getPrice() {
-        float price;
-        String size = String.valueOf(Product.getSize());
-        if (size.equalsIgnoreCase("small")) {
-            price = 2.00f;
-        } else if (size.equalsIgnoreCase("medium")) {
-            price = 2.50f;
-        } else if (size.equalsIgnoreCase("large")) {
-            price = 3.00f;
-        } else {
-            System.out.println("Sorry, that is an invalid size.");
+    public Drink(float price, int quantity, String drinkSize, String flavor) {
+        super(price, quantity);
+        if(drinkOption == 1){ // option for Sm. Drink
+            setPrice(2.00f);
+        } else if(drinkOption == 2){ // option for Med. Drink
+            setPrice(2.50f);
+        } else if(drinkOption == 3){ // option for Lrg. Drink
+            setPrice(3.00f);
         }
-        return 0.0f;
+        this.flavor = flavor;
+
     }
+
+//    @Override
+//    public void setPrice(float price) {
+//        if(getSize() == 1){ // option for Sm. Drink
+//            price = 2.00f;
+//        } else if(getSize() == 2){ // option for Med. Drink
+//            price = 2.50f;
+//        } else if(getSize() == 3){ // option for Lrg. Drink
+//            price = 3.00f;
+//        }
+//    }
 }

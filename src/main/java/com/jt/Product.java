@@ -1,23 +1,23 @@
 package com.jt;
 
-public abstract class Product {
+public class Product{
     private float price;
     private int quantity;
-    private static int size;
+    private String size;
 
     public Product(float price, int quantity) {
         this.price = price;
         this.quantity = quantity;
     }
 
-    public Product(float price, int quantity, int size) {
+    public Product(float price, int quantity, String size) {
         this.price = price;
         this.quantity = quantity;
-        Product.size = size;
+        this.size = size;
     }
 
     public static float getPrice() {
-        return 0;
+        return price;
     }
 
     public void setPrice(float price) {
@@ -32,18 +32,19 @@ public abstract class Product {
         this.quantity = quantity;
     }
 
-    public static int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
-        Product.size = size;
+    public void setSize(String size) {
+        this.size = size;
     }
 
 
     @Override
     public String toString() {
-        return "Product{" + '\'' + ", price=" + price +
+        return "Order{" +
+                ", price=" + price +
                 ", quantity=" + quantity +
                 ", size='" + size + '\'' +
                 '}';
