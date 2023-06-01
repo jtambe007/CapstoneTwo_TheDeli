@@ -1,7 +1,7 @@
 package com.jt;
 
 public class Product{
-    private float price;
+    private static float price;
     private int quantity;
     private String size;
 
@@ -16,7 +16,7 @@ public class Product{
         this.size = size;
     }
 
-    public static float getPrice() {
+    public float getPrice() {
         return price;
     }
 

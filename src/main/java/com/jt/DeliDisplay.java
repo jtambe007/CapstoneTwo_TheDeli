@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class DeliDisplay {
-    private Order order = new Order();
+    private static final Order order = new Order();
     static Scanner scanner = new Scanner(System.in);
     public void displayHomeScreen() {
         int userInput;
@@ -22,15 +22,9 @@ public class DeliDisplay {
             userInput = scanner.nextInt();
 
             switch (userInput) {
-                case 1:
-                    displayOrderScreen();
-                    break;
-                case 2:
-                    System.out.println("Exiting...");
-                    break;
-                default:
-                    System.out.println("Invalid input, try again");
-
+                case 1 -> displayOrderScreen();
+                case 2 -> System.out.println("Exiting...");
+                default -> System.out.println("Invalid input, try again");
             }
 
         } while (userInput == 0);
@@ -53,23 +47,12 @@ public class DeliDisplay {
             subInput = scanner.nextInt();
 
             switch (subInput) {
-                case 1:
-                    displayAddSandwich();
-                    break;
-                case 2:
-                    displayAddDrink();
-                    break;
-                case 3:
-                    displayAddChips();
-                    break;
-                case 4:
-                    displayCheckout();
-                    break;
-                case 0:
-                    displayHomeScreen();
-                    break;
-                default:
-                    System.out.println("Invalid input, try again");
+                case 1 -> displayAddSandwich();
+                case 2 -> displayAddDrink();
+                case 3 -> displayAddChips();
+                case 4 -> displayCheckout();
+                case 0 -> displayHomeScreen();
+                default -> System.out.println("Invalid input, try again");
             }
 
         } while (subInput == 0);
@@ -121,8 +104,8 @@ public class DeliDisplay {
 
                 } while (extraMeat.equalsIgnoreCase("yes"));
 
-            } else {
-            }// Prompt Customer for Toppings (Cheese)
+            }  // Prompt Customer for Toppings (Cheese)
+
             System.out.println("Would you like to add Cheese?");
             String addCheese = scanner.nextLine();
             String cheese = null;
@@ -156,16 +139,17 @@ public class DeliDisplay {
             String addSauce = scanner.nextLine();
             String sauce = null;
             if (addSauce.equalsIgnoreCase("yes")) {
-                System.out.println("What Sauces would you like to add? We have:" +
-                        "\n Mayo, Mustard, Ketchup, Ranch, Au Jus," +
-                        "\n Thousand Island, and Vinaigrette.");
+                System.out.println("""
+                        What Sauces would you like to add? We have:
+                        Mayo, Mustard, Ketchup, Ranch, Au Jus,
+                        Thousand Island, and Vinaigrette.""");
                 sauce = scanner.nextLine();
             }
             System.out.println("Would you like your sandwich toasted?");
             String toasted = scanner.nextLine();
 
 // DONE DEAL - add to arraylist
-            Product sandwich = new Sandwich(Sandwich.getPrice(), 1, size, bread, addMeat, extraMeat, cheese,
+            Product sandwich = new Sandwich(1, size, bread, addMeat, extraMeat, cheese,
                     extraCheese,
                     toppingList,
                     sauce, toasted);
@@ -180,6 +164,12 @@ public class DeliDisplay {
                 System.out.println(order);
                 displayOrderScreen();
             }
+            Product nextSandwich = new Sandwich(1, size, bread, addMeat, extraMeat, cheese,
+                    extraCheese,
+                    toppingList,
+                    sauce, toasted);
+            order.addProduct(nextSandwich);
+            System.out.print(order);
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
 
 
@@ -191,9 +181,10 @@ public class DeliDisplay {
         if (addDrink.equalsIgnoreCase("yes")) {
             String anotherDrink;
             do {
-                System.out.println("What size drink would you like?" +
-                        "\nWe have 3 Sizes: 1:Small ($2), 2:Medium ($2.50), 3:Large ($3)" +
-                        "\nTo Choose Size Input: 1, 2, or 3");
+                System.out.println("""
+                        What size drink would you like?
+                        We have 3 Sizes: 1:Small ($2), 2:Medium ($2.50), 3:Large ($3)
+                        To Choose Size Input: 1, 2, or 3""");
                 int drinkOption = scanner.nextInt();
 
                 System.out.println("What flavor would you like?");
@@ -209,15 +200,17 @@ public class DeliDisplay {
                 }
 
                 // adds Drink to ArrayList
-                Product drink = new Drink(Drink.getPrice(), 1, "", "");
+                Product drink = new Drink(1, "", "");
                 order.addProduct(drink);
                 System.out.println(drink);
-                System.out.println("You have added 1 " + drinkSize + " " + drinkFlavor + " to your Order.");
 
                 // Gives customer option to add another Drink
                 System.out.println("Would you like to add another Drink?");
                 anotherDrink = scanner.nextLine();
                 displayOrderScreen();
+                Product nextDrink = new Drink(1, "", "");
+                order.addProduct(nextDrink);
+                System.out.println(nextDrink);
             } while (anotherDrink.equalsIgnoreCase("yes"));
         }
     }
@@ -231,7 +224,7 @@ public class DeliDisplay {
             System.out.println("You have added " + chipName + " to your order.");
 
             // adds Chips to arrayList
-            Product chip = new Chip(Chip.getPrice(), 1, chipName);
+            Product chip = new Chip(1, chipName);
             order.addProduct(chip);
             System.out.println(chip);
 
@@ -256,26 +249,21 @@ public class DeliDisplay {
             checkoutInput = checkoutInput.toUpperCase();
 
             switch (checkoutInput) {
-                case "O":
-                    confirmOrder();
+                case "O" -> {
+                    ReceiptFileManager receiptFileManager = new ReceiptFileManager();
+//                    receiptFileManager.writeReceiptToFile();
+                    System.out.println("DELI-CIOUS Sandwiches" + "\n" +
+                            "*******************************************" + "\n"  + Order.getProductList());
                     break;
-                case "X":
-                    System.out.println("no");
+                }
+                case "X" -> {
+                    System.out.println("Canceling order...");
                     break;
-                default:
-                    System.out.println("Invalid input, try again");
-                    break;
+                }
+                default -> System.out.println("Invalid input, try again");
             }
 
         } while (!checkoutInput.equalsIgnoreCase("X"));
     }
 
-    public static void confirmOrder(){
-//        String receiptData = "DELI-ICIOUS Sandwiches" + "\n" +
-//                "*******************************************" +
-//                size +
-//
-//        return receiptData;
-
-    }
 }

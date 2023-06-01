@@ -3,10 +3,9 @@ package com.jt;
 public class Chip extends Product {
     private String name;
 
-    public Chip(float price, int quantity, String name) {
-        super(price, quantity);
+    public Chip(int quantity, String name) {
+        super(1.50f, quantity);
         this.name = name;
-        this.setPrice(1.50f);
     }
 
     public String getName() {

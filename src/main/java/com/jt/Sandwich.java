@@ -12,9 +12,9 @@ public class Sandwich extends Product{
     private String sauce;
     private String toasted;
 
-    public Sandwich(float price, int quantity, int size, String bread, String meat, String extraMeat, String cheese
+    public Sandwich(int quantity, int size, String bread, String meat, String extraMeat, String cheese
             , String extraCheese, ArrayList<String> toppings, String sauce, String toasted) {
-        super(price, quantity, size);
+        super(0, quantity, String.valueOf(size));
         this.bread = bread;
         this.meat = meat;
         this.extraMeat = extraMeat;
@@ -26,17 +26,18 @@ public class Sandwich extends Product{
     }
 
     @Override
-    public void setPrice(float price) {
+    public float getPrice() {
         if (getSize().contains("4")) {
-            price += 5.50f;
+            return 5.50f;
 
         } else if (getSize().contains("8")) {
-            price += 7.00f;
+            return  7.00f;
         } else if (getSize().contains("12")) {
-            price += 8.50f;
+            return  8.50f;
         } else {
             System.out.println("Sorry. That is an invalid entry.");
         }
+        return 0;
     }
 
 
@@ -103,5 +104,19 @@ public class Sandwich extends Product{
 
     public void setToasted(String toasted) {
         toasted = toasted;
+    }
+
+    @Override
+    public String toString() {
+        return "Sandwich{" +
+                "bread='" + bread + '\'' +
+                ", meat='" + meat + '\'' +
+                ", extraMeat='" + extraMeat + '\'' +
+                ", Cheese='" + Cheese + '\'' +
+                ", extraCheese='" + extraCheese + '\'' +
+                ", toppings='" + toppings + '\'' +
+                ", sauce='" + sauce + '\'' +
+                ", toasted='" + toasted + '\'' +
+                '}'+ "\n";
     }
 }

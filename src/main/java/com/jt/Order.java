@@ -2,10 +2,13 @@ package com.jt;
 import java.util.ArrayList;
 public class Order {
 
-    private final ArrayList<Product> productList;
+    private static ArrayList<Product> productList;
+    public static ArrayList<Product> getProductList() {
+        return productList;
+    }
 
     public Order() {
-        this.productList = new ArrayList<>();
+        productList = new ArrayList<>();
     }
 
     public void addProduct(Product product) {

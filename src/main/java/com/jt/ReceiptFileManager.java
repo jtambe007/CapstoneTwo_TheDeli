@@ -1,26 +1,25 @@
 package com.jt;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class ReceiptFileManager {
-    public void writeReceiptToFile(String receiptData, String fileName) throws IOException {
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter("./src/main/java/receipts/receipt.txt");
-            writer.write(receiptData);
-        } finally {
-            if (writer != null) {
-                writer.close();
-            }
+    public void writeReceiptToFile(String receipt) throws IOException {
+        try (FileWriter writer = new FileWriter("./src/main/java/receipts")) {
+//            writer.write(DeliDisplay);
+        } catch (IOException e) {
+            System.out.println("Printing receipt unsuccessful");
+            e.printStackTrace();
         }
     }
 
-    public String addDateTimeToReceipt(String receiptData) {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = currentDateTime.format(formatter);
-        return formattedDateTime + "    " + receiptData;
+    public String customReceiptFile() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+        Date date = new Date();
+        return dateFormat.format(date) + ".txt";
     }
 }
