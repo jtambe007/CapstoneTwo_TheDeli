@@ -105,9 +105,9 @@ public class DeliDisplay {
             System.out.println("Would you like to add any Meat?");
             String answer = scanner.nextLine();
 
+
             if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("no")){
-                { System.out.println("Please enter a valid answer");
-                    answer = scanner.nextLine();
+                {answer = scanner.nextLine();
 
                     String extraMeat;
                     do {
@@ -116,7 +116,10 @@ public class DeliDisplay {
                         String addMeat = scanner.nextLine();
                         while(!(addMeat.equalsIgnoreCase("Steak") || addMeat.equalsIgnoreCase("Ham")
                                 || addMeat.equalsIgnoreCase("Salami") || addMeat.equalsIgnoreCase("Roast Beef")
-                                || addMeat.equalsIgnoreCase("Chicken")
+                                || addMeat.equalsIgnoreCase("Chicken") || addMeat.equalsIgnoreCase("Bacon"))){
+                            System.out.println("Please enter a valid meat type");
+                            addMeat = scanner.nextLine();
+                        }
 
 
                         // Prompt Customer to Add Extra Meat
@@ -124,8 +127,7 @@ public class DeliDisplay {
                                 "\n There will be an up charge.");
                         extraMeat = scanner.nextLine();
 
-                    } while (extraMeat.equalsIgnoreCase("yes") || extraMeat.equalsIgnoreCase("No"));{
-                    System.out.println("Please enter a valid answer");
+                    } while (extraMeat.equalsIgnoreCase("no"));{
                     extraMeat = scanner.nextLine();
                 };
 
@@ -133,10 +135,6 @@ public class DeliDisplay {
             } else { }// Prompt Customer for Toppings (Cheese)
             System.out.println("Would you like to add Cheese?");
             String addCheese = scanner.nextLine();
-            if (addCheese.equalsIgnoreCase("yes") || addCheese.equalsIgnoreCase("No")) {
-                System.out.println("Please enter a valid answer");
-                addCheese = scanner.nextLine();
-            }
             {
                 String extraCheese;
                 do {
@@ -200,10 +198,14 @@ public class DeliDisplay {
             addExtraSandwich = scanner.nextLine();
             while(addExtraSandwich.equalsIgnoreCase("Yes") || addExtraSandwich.equalsIgnoreCase("No"))
             if (addExtraSandwich.equalsIgnoreCase("no")) {
+                System.out.println("Please enter a valid answer");
+                addExtraSandwich = scanner.nextLine();
+            }
+            {
                 System.out.println("You have finished building a Sandwich.");
                 System.out.println();
                 displayAddDrink();
-            } else {}
+            }
         } while (addExtraSandwich.equalsIgnoreCase("yes"));
 
 
