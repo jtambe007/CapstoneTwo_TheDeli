@@ -1,4 +1,5 @@
 package com.jt;
+import java.io.IOException;
 import java.util.ArrayList;
 public class Order {
 
@@ -13,6 +14,12 @@ public class Order {
 
     public void addProduct(Product product) {
         productList.add(product);
+    }
+
+    public void getReceipt() throws IOException {
+        ReceiptFileManager receiptFileManager = new ReceiptFileManager();
+        receiptFileManager.writeReceiptToFile(productList.toString());
+
     }
 
     @Override

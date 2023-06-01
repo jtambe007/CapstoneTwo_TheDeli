@@ -242,24 +242,28 @@ public class DeliDisplay {
             System.out.println("╔══════════════════╗");
             System.out.println("║     Checkout     ║");
             System.out.println("╠══════════════════╣");
-            System.out.println("║ O. Confirm Order ║");
+            System.out.println("║ C. Confirm Order ║");
             System.out.println("║ X. Cancel Order  ║");
             System.out.println("╚══════════════════╝");
             checkoutInput = scanner.nextLine();
             checkoutInput = checkoutInput.toUpperCase();
 
             switch (checkoutInput) {
-                case "O" -> {
-                    ReceiptFileManager receiptFileManager = new ReceiptFileManager();
-//                    receiptFileManager.writeReceiptToFile();
+                case "C" -> {
+                    System.out.println("Is your order correct?");
                     System.out.println("DELI-CIOUS Sandwiches" + "\n" +
                             "*******************************************" + "\n"  + Order.getProductList());
-                    break;
+                    String confirmIput = scanner.nextLine();
+                    if (confirmIput.equalsIgnoreCase("yes")){
+                        System.out.println("Thank you for placing your order. Your meal will be ready shortly!");
+                    } else if (confirmIput.equalsIgnoreCase("no")){
+                        System.out.println("Sorry. Please re-do your order");
+                        displayOrderScreen();
+                    } else {
+                        System.out.println("Invalid input");
+                    }
                 }
-                case "X" -> {
-                    System.out.println("Canceling order...");
-                    break;
-                }
+                case "X" -> System.out.println("Canceling order...");
                 default -> System.out.println("Invalid input, try again");
             }
 

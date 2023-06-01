@@ -1,25 +1,27 @@
 package com.jt;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.DateFormat;
+import java.io.*;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class ReceiptFileManager {
-    public void writeReceiptToFile(String receipt) throws IOException {
-        try (FileWriter writer = new FileWriter("./src/main/java/receipts")) {
-//            writer.write(DeliDisplay);
-        } catch (IOException e) {
-            System.out.println("Printing receipt unsuccessful");
-            e.printStackTrace();
-        }
-    }
 
-    public String customReceiptFile() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
-        Date date = new Date();
-        return dateFormat.format(date) + ".txt";
-    }
+
+        public void writeReceiptToFile(String receipt) throws IOException {
+
+            try {
+                // Generate a unique file name using the current timestamp
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                String timestamp = dateFormat.format(new Date());
+                String fileName = "receipt_" + timestamp + ".txt";
+
+                FileOutputStream writeReceipt = new FileOutputStream(fileName);
+                ObjectOutputStream writeStream = new ObjectOutputStream(writeReceipt);
+                writeStream.writeObject(Order.getProductList());
+                writeStream.flush();
+                writeStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 }
