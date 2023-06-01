@@ -8,7 +8,7 @@ public class ReceiptFileManager {
     public void writeReceiptToFile(String receiptData, String fileName) throws IOException {
         FileWriter writer = null;
         try {
-            writer = new FileWriter(fileName);
+            writer = new FileWriter("./src/main/java/receipts/receipt.txt");
             writer.write(receiptData);
         } finally {
             if (writer != null) {
