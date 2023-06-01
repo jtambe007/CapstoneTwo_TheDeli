@@ -3,7 +3,7 @@ package com.jt;
 public class Drink extends Product {
     private String brand;
 
-    public Drink(float price, int quantity, String size, String brand) {
+    public Drink(float price, int quantity, int size, String brand) {
         super(price, quantity, size);
         this.brand = brand;
     }
@@ -19,7 +19,7 @@ public class Drink extends Product {
 
     public static float getPrice() {
         float price;
-        String size = Product.getSize();
+        String size = String.valueOf(Product.getSize());
         if (size.equalsIgnoreCase("small")) {
             price = 2.00f;
         } else if (size.equalsIgnoreCase("medium")) {

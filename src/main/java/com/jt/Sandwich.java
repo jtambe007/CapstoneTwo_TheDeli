@@ -6,7 +6,7 @@ public class Sandwich extends Product {
     private String bread;
     private String meat;
     private String extraMeat;
-    private String Cheese;
+    private String cheese;
     private String extraCheese;
     private String toppings;
     private String sauce;
@@ -18,7 +18,7 @@ public class Sandwich extends Product {
         this.bread = bread;
         this.meat = meat;
         this.extraMeat = extraMeat;
-        Cheese = cheese;
+        this.cheese = cheese;
         this.extraCheese = extraCheese;
         this.toppings = String.valueOf(toppings);
         this.sauce = sauce;
@@ -27,7 +27,7 @@ public class Sandwich extends Product {
 
     public static float getPrice() {
         float price;
-        String size = Product.getSize();
+        int size = Product.getSize();
 
         if (size.contains("4")) {
             price = 5.50f;

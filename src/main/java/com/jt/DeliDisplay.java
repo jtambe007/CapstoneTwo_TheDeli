@@ -156,12 +156,6 @@ public class DeliDisplay {
             System.out.println("Would you like your sandwich toasted?");
             String toasted = scanner.nextLine();
 
-            // Build sandwich
-            Product sandwich = new Sandwich(Sandwich.getPrice(), 1, size, bread, addMeat, extraMeat, cheese,
-                    extraCheese,
-                    toppingList,
-                    sauce, toasted);
-            order.addProduct(sandwich);
 
                 System.out.println("""
                         What Sauces would you like to add? We have:
@@ -171,6 +165,11 @@ public class DeliDisplay {
                 System.out.println("Would you like your sandwich toasted?");
                 toasted = scanner.nextLine();
 // DONE DEAL - add to arraylist
+            Product sandwich = new Sandwich(Sandwich.getPrice(), 1, size, bread, addMeat, extraMeat, cheese,
+                    extraCheese,
+                    toppingList,
+                    sauce, toasted);
+            order.addProduct(sandwich);
 
             // Gives Customer Option to Build Another Sandwich;
             System.out.println("Would you like to add another Sandwich?");
@@ -220,7 +219,7 @@ public class DeliDisplay {
             order.addProduct(chipType);
             displayCheckout();
         } else {
-            System.out.println(order);
+            System.out.println(order.toString());
             displayCheckout();
         }
     }

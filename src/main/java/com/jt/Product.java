@@ -3,14 +3,14 @@ package com.jt;
 public abstract class Product {
     private float price;
     private int quantity;
-    private static String size;
+    private static int size;
 
     public Product(float price, int quantity) {
         this.price = price;
         this.quantity = quantity;
     }
 
-    public Product(float price, int quantity, String size) {
+    public Product(float price, int quantity, int size) {
         this.price = price;
         this.quantity = quantity;
         Product.size = size;
@@ -32,11 +32,11 @@ public abstract class Product {
         this.quantity = quantity;
     }
 
-    public static String getSize() {
+    public static int getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(int size) {
         Product.size = size;
     }
 
