@@ -101,15 +101,14 @@ public class Sandwich extends Product{
 
     @Override
     public String toString() {
-        return "Custom Sandwich: { " + sandSize + "in. Sandwich"+
-                "bread='" + bread + '\'' +
-                ", meat='" + meat + '\'' +
-                ", extraMeat='" + extraMeat + '\'' +
-                ", cheese='" + cheese + '\'' +
-                ", extraCheese='" + extraCheese + '\'' +
-                ", toppings='" + toppings + '\'' +
-                ", sauce='" + sauce + '\'' +
-                ", toasted='" + toasted + '\'' +
-                '}'+ "\n";
+        return "Custom Sandwich: " + sandSize + "in. Sandwich,  "+
+                "Bread Type=" + bread + "," + "\n" +
+                "meat=" + meat +
+                ", extraMeat= " + extraMeat +
+                ", cheese= " + cheese +
+                ", extraCheese=" + extraCheese + "\n" +
+                ", toppings= " + toppings +
+                ", sauce=" + sauce +
+                ", toasted=" + toasted ;
     }
 }

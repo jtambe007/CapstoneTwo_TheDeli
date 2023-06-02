@@ -28,7 +28,7 @@ public class Product extends Order{
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Order{ " +
                 ", price=" + price +
                 ", quantity=" + quantity +
                 '}';

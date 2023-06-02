@@ -72,8 +72,8 @@ public class DeliDisplay {
             // Prompt Customer for Toppings (Cheese)
             System.out.println("Would you like to add Cheese?");
             String addCheese = scanner.nextLine();
-            String cheese = new String();
             String extraCheese = new String();
+            String cheese = new String();
             if (addCheese.equalsIgnoreCase("yes")) {
                 do {
                     System.out.println("""
@@ -90,8 +90,7 @@ public class DeliDisplay {
                     // Prompt Customer to Add Extra Cheese
                     System.out.println("""
                              Would you like to add extra cheese?
-                             There will be an up charge. 
-                            """);
+                             There will be an up charge. """);
                     extraCheese = scanner.nextLine();
                 } while (extraCheese.equalsIgnoreCase("yes"));{
                     extraCheese = scanner.nextLine();}
@@ -102,8 +101,7 @@ public class DeliDisplay {
             System.out.println("""
             What toppings would you like to add? We have: 
             Lettuce, Peppers, Onions, Tomatoes, Jalapenos,
-            Cucumbers, Pickles, Guacamole, and Mushrooms. 
-            """);
+            Cucumbers, Pickles, Guacamole, and Mushrooms. """);
             String toppings = scanner.nextLine();
             ArrayList<String> toppingList = new ArrayList<>();
             if (toppings.contains(",")) {
@@ -125,6 +123,7 @@ public class DeliDisplay {
                         || sauce.equalsIgnoreCase("Au Jus") || sauce.equalsIgnoreCase("Thousand Island")
                         || sauce.equalsIgnoreCase("Vinaigrette"))){
                     System.out.println("Please enter a valid sauce type!");
+                    sauce = scanner.nextLine();
                 }
             }
             System.out.println("Would you like your sandwich toasted?");
@@ -136,13 +135,13 @@ public class DeliDisplay {
                     toppingList,
                     sauce, toasted);
             order.addProduct(sandwich);
-            System.out.print(order);
 
             // Gives Customer Option to Build Another Sandwich;
             System.out.println("Would you like to add another Sandwich?");
             addExtraSandwich = scanner.nextLine();
             if (addExtraSandwich.equalsIgnoreCase("no")) {
                 System.out.println("You have finished building a Sandwich.");
+                System.out.println();
                 System.out.println(order);
                 orderMenu.displayOrderScreen();
             }
