@@ -3,17 +3,22 @@ package com.jt;
 import java.io.IOException;
 import java.util.ArrayList;
 public class Order {
-    private ArrayList<Product> productList;
-    public ArrayList<Product> getProductList() {
+    private static ArrayList<Product> productList;
+    public static ArrayList<Product> getProductList() {
         return productList;
     }
 
     public Order() {
-        this.productList = new ArrayList<>();
+        productList = new ArrayList<>();
     }
 
     public void addProduct(Product product) {
         productList.add(product);
+    }
+
+    public void getReceipt() throws IOException {
+        ReceiptFileManager receiptFileManager = new ReceiptFileManager();
+        receiptFileManager.writeReceiptToFile(productList.toString());
     }
 
     @Override
@@ -23,10 +28,7 @@ public class Order {
                 '}';
     }
 
-//    public void printReceiptData() throws IOException {
-//        ReceiptFileManager fileManager = new ReceiptFileManager();
-//        fileManager.writeReceiptToFile(productList);
-//    }
+
 
 
 }
