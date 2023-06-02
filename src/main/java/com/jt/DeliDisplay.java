@@ -190,7 +190,7 @@ public class DeliDisplay {
                 System.out.println("Would you like to add another Drink?");
                 anotherDrink = scanner.nextLine();
                 orderMenu.displayOrderScreen();
-            } while (anotherDrink.equalsIgnoreCase("yes"));
+            } while (!anotherDrink.equalsIgnoreCase("yes"));
         }
     }
     public void displayAddChips() {

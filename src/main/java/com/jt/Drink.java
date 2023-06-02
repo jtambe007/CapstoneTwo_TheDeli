@@ -54,6 +54,6 @@ public class Drink extends Product{
     public String toString() {
         return "Drink Qty:" + getQuantity() + " " +
                 getDrinkSize() + " " + getFlavor()
-                + "$" + getPrice();
+                + "$" + getPrice() + "\n";
     }
 }

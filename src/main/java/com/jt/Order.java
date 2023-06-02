@@ -3,8 +3,8 @@ package com.jt;
 import java.io.IOException;
 import java.util.ArrayList;
 public class Order {
-    private static ArrayList<Product> productList;
-    public static ArrayList<Product> getProductList() {
+    private ArrayList<Product> productList;
+    public ArrayList<Product> getProductList() {
         return productList;
     }
 
