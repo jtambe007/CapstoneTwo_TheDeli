@@ -10,13 +10,17 @@ public class DeliDisplay {
 
     public void displayAddSandwich() {
 
-        // Prompt user for Sandwich Size
         String addExtraSandwich;
         Scanner scanner = new Scanner(System.in);
 
+        // Prompt user for Sandwich Size
         do {
-            System.out.println("What Size Sandwich would you like?");
-            System.out.println("We have 3 Sizes: 4in.($5.50), 8in.($7.00), and 12in.($8.50)");
+            System.out.println("""
+            What Size Sandwich would you like?
+            We have 3 Sizes:  4in.($5.50),
+                              8in.($7.00)
+                              12in.($8.50)
+                 Enter 4, 8, or 12 to Choose. """);
             int size = scanner.nextInt();
             while (!(size == 4 || size ==8 || size == 12)) {
                 System.out.println("Please enter a valid value!");
@@ -26,6 +30,7 @@ public class DeliDisplay {
             // Prompt Customer for Bread Type
             System.out.println("What Type Of Bread Would You Like?");
             System.out.println("We have White, Wheat, Rye, or a Wrap. ");
+
             String bread = scanner.nextLine();
             while (!(bread.equalsIgnoreCase("Wheat") || bread.equalsIgnoreCase("White")
                     || bread.equalsIgnoreCase("Wrap") || bread.equalsIgnoreCase("Rye"))) {
@@ -35,56 +40,77 @@ public class DeliDisplay {
 
 
             // Prompt Customer for Meat Topping
-
             System.out.println("Would you like to add any Meat?");
             String answer = scanner.nextLine();
 
-            String addMeat = null;
-            String extraMeat = null;
-            if (answer.equalsIgnoreCase("yes")) {
+            String addMeat = new String();
+            String extraMeat = new String();
+            if (answer.equalsIgnoreCase("yes")){
                 do {
-                    System.out.println("What meat would you like to add?" +
-                            "\nWe have: Steak, Ham, Salami, Roast Beef, Chicken, and Bacon.");
-                    addMeat = scanner.nextLine();
+                    System.out.println("""
+                            What meat would you like to add?
+                            We have: Steak, Chicken, Salami, 
+                                     Roast Beef, Ham, and Bacon.""");
+
+                        addMeat = scanner.nextLine();
+                    while(!(addMeat.equalsIgnoreCase("Steak") || addMeat.equalsIgnoreCase("Ham")
+                            || addMeat.equalsIgnoreCase("Salami") || addMeat.equalsIgnoreCase("Roast Beef")
+                            || addMeat.equalsIgnoreCase("Chicken") || addMeat.equalsIgnoreCase("Bacon"))) {
+                        System.out.println("Please enter a valid meat type");
+                        addMeat = scanner.nextLine();
+                    }
 
                     // Prompt Customer to Add Extra Meat
-                    System.out.println("Would you like to add extra meat?" +
-                            "\n There will be an up charge.");
+                    System.out.println("""
+                            Would you like to add extra meat?" 
+                            There will be an up charge.""");
                     extraMeat = scanner.nextLine();
-
                 } while (extraMeat.equalsIgnoreCase("yes"));
-
-            }  // Prompt Customer for Toppings (Cheese)
-
-            System.out.println("Would you like to add Cheese?");
-            String addCheese = scanner.nextLine();
-            String cheese = null;
-            String extraCheese = null;
-            if (addCheese.equalsIgnoreCase("yes")) {
-                do {
-                    System.out.println("What cheese would you like to add?" +
-                            "\nWe have: American, Provolone, Cheddar, and Swiss. ");
-                    cheese = scanner.nextLine();
-
-                    // Prompt Customer to Add Extra Cheese
-                    System.out.println("Would you like to add extra cheese?" +
-                            "\n There will be an up charge.");
-                    extraCheese = scanner.nextLine();
-                } while (extraCheese.equalsIgnoreCase("yes"));
-            } else {
-                System.out.println();
             }
 
+
+            // Prompt Customer for Toppings (Cheese)
+            System.out.println("Would you like to add Cheese?");
+            String addCheese = scanner.nextLine();
+            String cheese = new String();
+            String extraCheese = new String();
+            if (addCheese.equalsIgnoreCase("yes")) {
+                do {
+                    System.out.println("""
+                            What cheese would you like to add?
+                            We have: American, Provolone, 
+                                     Cheddar, and Swiss. """);
+                    cheese = scanner.nextLine();
+                    while (!(cheese.equalsIgnoreCase("American") || cheese.equalsIgnoreCase("Provolone")
+                            || cheese.equalsIgnoreCase("Cheddar") || cheese.equalsIgnoreCase("Swiss"))) {
+                        System.out.println("Please enter a valid Cheese Type!");
+                        cheese = scanner.nextLine();
+                    }
+
+                    // Prompt Customer to Add Extra Cheese
+                    System.out.println("""
+                             Would you like to add extra cheese?
+                             There will be an up charge. 
+                            """);
+                    extraCheese = scanner.nextLine();
+                } while (extraCheese.equalsIgnoreCase("yes"));{
+                    extraCheese = scanner.nextLine();}
+            }
+
+
             // Prompt Customer for Regular Toppings
-            System.out.println("What toppings would you like to add? We have: ");
-            System.out.println("Lettuce, Peppers, Onions, Tomatoes, Jalapenos" +
-                    "\nCucumbers, Pickles, Guacamole, and Mushrooms.");
+            System.out.println("""
+            What toppings would you like to add? We have: 
+            Lettuce, Peppers, Onions, Tomatoes, Jalapenos,
+            Cucumbers, Pickles, Guacamole, and Mushrooms. 
+            """);
             String toppings = scanner.nextLine();
             ArrayList<String> toppingList = new ArrayList<>();
             if (toppings.contains(",")) {
                 toppingList.addAll(Arrays.asList(toppings.split(",", 0)));
             }
 
+            // Prompts Customer to add Sauces
             System.out.println("Would you like to add any Sauces?");
             String addSauce = scanner.nextLine();
             String sauce = null;
@@ -94,11 +120,17 @@ public class DeliDisplay {
                         Mayo, Mustard, Ketchup, Ranch, Au Jus,
                         Thousand Island, and Vinaigrette.""");
                 sauce = scanner.nextLine();
+                while(!(sauce.equalsIgnoreCase("Mayo") || sauce.equalsIgnoreCase("Mustard")
+                        || sauce.equalsIgnoreCase("Ketchup") || sauce.equalsIgnoreCase("Ranch")
+                        || sauce.equalsIgnoreCase("Au Jus") || sauce.equalsIgnoreCase("Thousand Island")
+                        || sauce.equalsIgnoreCase("Vinaigrette"))){
+                    System.out.println("Please enter a valid sauce type!");
+                }
             }
             System.out.println("Would you like your sandwich toasted?");
             String toasted = scanner.nextLine();
 
-// DONE DEAL - add to arraylist
+// DONE DEAL - add Sandwich to productList
             Product sandwich = new Sandwich(1, size, bread, addMeat, extraMeat, cheese,
                     extraCheese,
                     toppingList,

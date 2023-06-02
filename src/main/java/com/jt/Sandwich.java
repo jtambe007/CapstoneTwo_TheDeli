@@ -97,19 +97,7 @@ public class Sandwich extends Product{
     public void setToasted(String toasted) {
         toasted = toasted;
     }
-//    @Override
-//    public float getPrice() {
-//        if (getSize().contains(4)) {
-//            return 5.50f;
-//        } else if (getSize().contains("8")) {
-//            return  7.00f;
-//        } else if (getSize().contains("12")) {
-//            return  8.50f;
-//        } else {
-//            System.out.println("Sorry. That is an invalid entry.");
-//        }
-//        return 0;
-//    }
+
 
     @Override
     public String toString() {

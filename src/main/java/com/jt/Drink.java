@@ -21,6 +21,7 @@ public class Drink extends Product{
 
     }
 
+
     @Override
     public float getPrice() {
         if (this.drinkSize.equalsIgnoreCase("small")) { // option for Sm. Drink
@@ -33,7 +34,6 @@ public class Drink extends Product{
             return 0;
         }
     }
-
     public String getFlavor() {
         return flavor;
     }
@@ -52,9 +52,8 @@ public class Drink extends Product{
 
     @Override
     public String toString() {
-        return "Drink{" +
-                "flavor='" + flavor + '\'' +
-                ", drinkSize='" + drinkSize + '\'' +
-                '}';
+        return "Drink Qty:" + getQuantity() + " " +
+                getDrinkSize() + " " + getFlavor()
+                + "$" + getPrice();
     }
 }
