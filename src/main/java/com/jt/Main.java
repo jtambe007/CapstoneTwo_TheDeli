@@ -66,6 +66,8 @@ public class Main {
 
     public void displayCheckout() {
         Scanner scanner = new Scanner(System.in);
+        Order Confirm = new Order();
+        Confirm.getProductList();
         String checkoutInput;
 
             System.out.println("╔══════════════════╗");
@@ -81,7 +83,8 @@ public class Main {
                 case "C" -> {
                     System.out.println("Is your order correct?");
                     System.out.println("DELI-CIOUS Sandwiches" + "\n" +
-                            "*******************************************" + "\n"  + Order.getProductList());
+                            "*******************************************" );
+                    System.out.println(Confirm.getProductList());
                     System.out.println("Type Y for yes, N for no");
                     String confirmIput = scanner.nextLine();
                     if (confirmIput.equalsIgnoreCase("Y")){

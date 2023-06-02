@@ -109,6 +109,6 @@ public class Sandwich extends Product{
                 ", extraCheese=" + extraCheese + "\n" +
                 ", toppings= " + toppings +
                 ", sauce=" + sauce +
-                ", toasted=" + toasted ;
+                ", toasted=" + toasted + "\n";
     }
 }

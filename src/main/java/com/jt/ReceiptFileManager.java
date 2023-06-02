@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class ReceiptFileManager {
     public void writeReceiptToFile(String receipt) throws IOException {
+        Order Confirm = new Order();
+        Confirm.getProductList();
 
         try {
             // Generate a unique file name using the current timestamp
@@ -15,7 +17,7 @@ public class ReceiptFileManager {
 
             FileOutputStream writeReceipt = new FileOutputStream(fileName);
             ObjectOutputStream writeStream = new ObjectOutputStream(writeReceipt);
-            writeStream.writeObject(Order.getProductList());
+            writeStream.writeObject(Confirm.getProductList());
             writeStream.flush();
             writeStream.close();
         } catch (IOException e) {
